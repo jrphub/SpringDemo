@@ -1,5 +1,7 @@
 package com.jrp.spring.config;
 
+import com.jrp.spring.util.Roles;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,6 +26,11 @@ public class AppConfig {
     public SpeakerRepository getSpeakerRepository() {
         return new HibernateSpeakerRepositoryImpl();
     }*/
+
+    @Bean
+    public Roles getRole() {
+        return new Roles();
+    }
 
 
 }

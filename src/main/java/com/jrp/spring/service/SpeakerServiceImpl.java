@@ -2,6 +2,7 @@ package com.jrp.spring.service;
 
 import com.jrp.spring.model.Speaker;
 import com.jrp.spring.repository.SpeakerRepository;
+import com.jrp.spring.util.Roles;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -16,6 +17,13 @@ public class SpeakerServiceImpl implements SpeakerService {
     //we can inject SpeakerRepository in various way like setter or constructor injection
     private SpeakerRepository repository;
 
+    private Roles roles;
+
+    @Autowired
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
     @Autowired
     public SpeakerServiceImpl(SpeakerRepository repository) {
         System.out.println("constructor injection");
@@ -24,6 +32,7 @@ public class SpeakerServiceImpl implements SpeakerService {
 
     @Override
     public List<Speaker> findAll() {
+        System.out.println("Position : " + roles.getPosition());
         return repository.findAll();
     }
 
@@ -32,4 +41,5 @@ public class SpeakerServiceImpl implements SpeakerService {
         System.out.println("setter injection");
         this.repository = repository;
     }
+
 }
