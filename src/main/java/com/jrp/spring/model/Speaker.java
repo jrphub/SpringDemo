@@ -8,4 +8,5 @@ public class Speaker {
     private String lastName;
 
     private double seedNum;
+
 }
